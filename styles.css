@@ -9,6 +9,7 @@ body {
 
 nav {
     position: fixed;
+    z-index: 5;
 }
 
 .flex-container {
@@ -69,9 +70,11 @@ input[type=text] {
 
 .submit {
     background-color: gold;
-    font-size: 25px;
+    font-size: 35px;
     font-family: "Madimi One", sans-serif;
     border-radius: 10px;
+    margin: 20px;
+    padding: 5px;
 }
 
 .submit:hover {

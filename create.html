@@ -24,27 +24,29 @@
                 Create Your Nugget of Positivity!
             </h1>
         </center>
-        <form>
+        <form name="nuggetform">
             <label for="name">Name:     </label>
-            <input type="text" name="name" id="name" required />
+            <input type=text name="name" id="name" required />
             <div class="spacer"></div>
-            <label for="nugget">Nugget: </label>
+            <label for="nuggetcontents">Nugget: </label>
             <div class="text-container">
-                <textarea name="nugget" id="nuggetcontents" required></textarea>
+                <textarea type=text name="nuggetcontents" id="nuggetcontents" required></textarea>
             </div>
             <center>
                 <button class="submit">Send!</button>
             </center>
-            <br>
-            <hr>
-            <br>
-            <center>
-                <div id="nuggetposts" width="50%">
-                    <p>Happy Pi Day! ~ KitKat</p>
-                    <p>May good fortune find you ~ Anonymous</p>
-                </div>
-            </center>
         </form>
+        <br>
+        <hr>
+        <br>
+        <center>
+            <div id="nuggetposts" width="50%">
+                <p>Happy Pi Day!</p><p>~ KitKat</p>
+                <br>
+                <p>May good fortune find you</p><p>~ Anonymous</p>
+                <br>
+            </div>
+        </center>
     </div>
     <script>
         tinymce.init({
@@ -61,11 +63,13 @@
         });
 
         const post = document.querySelector('button.submit');
-        post.addEventListener((e) => {
-            alert();
-            let nugget = document.createElement("p");
-            nugget.innerText = document.getElementById('nuggetcontents').value + " ~ " + document.getElementById('name').value;
-            document.getElementById("nuggetposts").addChild(nugget);
+        post.addEventListener('click', (e) => {
+            if (document.getElementById('name').value != "") {
+                let nugget = document.createElement("p");
+                nugget.innerHTML = tinyMCE.get('nuggetcontents').getContent();
+                nugget.innerHTML += "<p>~ " + document.getElementById("name").value + "</p><br>";
+                document.getElementById("nuggetposts").appendChild(nugget);
+            }
         });
       </script>
 </body>
