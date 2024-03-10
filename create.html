@@ -68,6 +68,9 @@
             if (document.getElementById('name').value != "") {
                 let nugget = document.createElement("p");
                 nugget.innerHTML = tinyMCE.get('nuggetcontents').getContent();
+                if (tinyMCE.get('nuggetcontents').getContent() == "") {
+                    nugget.innerHTML = "<p>You got this!</p>";
+                }
                 nugget.innerHTML += "<p>~ " + document.getElementById("name").value + "</p><br>";
                 document.getElementById("nuggetposts").appendChild(nugget);
             }
